@@ -25,3 +25,6 @@ include(":intentapp")
 include(":Dialog")
 include(":app:favoritebook")
 include(":systemintentsapp")
+include(":simplefragmentapp")
+include(":app")
+ 

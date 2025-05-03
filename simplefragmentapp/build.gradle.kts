@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "ru.mirea.kotovsv.lesson3"
+    namespace = "ru.mirea.kotovsv.simplefragmentapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "ru.mirea.kotovsv.lesson3"
+        applicationId = "ru.mirea.kotovsv.simplefragmentapp"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -29,9 +29,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -40,10 +37,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.lifecycle.livedata.ktx)
-    implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.navigation.fragment)
-    implementation(libs.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
