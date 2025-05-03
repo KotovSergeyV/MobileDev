@@ -17,12 +17,12 @@ public class MyTimeDialog extends DialogFragment {
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
 
-        // Создаем TimePickerDialog с анонимным слушателем
         return new TimePickerDialog(
                 requireActivity(),
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
                         // Обработка выбранного времени
                         String time = hourOfDay + ":" + minute;
                         showSnackbar("Выбрано время: " + time);

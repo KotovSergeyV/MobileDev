@@ -1,9 +1,7 @@
-package ru.mirea.kotovsv.toastapp;
+package ru.mirea.kotovsv.intentapp;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,28 +9,31 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class IntentApp extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_intent_app);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
+
+        long dateInMillis = System.currentTimeMillis();
+        String format = "yyyy-MM-dd HH:mm:ss";
+        final SimpleDateFormat sdf = new SimpleDateFormat(format);
+        String dateString = sdf.format(new Date(dateInMillis));
+
+        Intent intent = new Intent(this, intentapp2.class);
+        intent.putExtra("datestr", dateString);
+        startActivity(intent);
 
 
-    public void onClickCount(View view)
-    {
-        EditText text = (EditText) findViewById(R.id.editTextText);
-
-        Toast toast = Toast.makeText(getApplicationContext(),
-                "«СТУДЕНТ № 9 ГРУППА БСБО-07-22 Количество символов - "+ text.length()+"!",
-                Toast.LENGTH_SHORT);
-        toast.show();
     }
 }

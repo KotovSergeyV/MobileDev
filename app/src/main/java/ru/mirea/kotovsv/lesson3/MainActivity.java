@@ -1,9 +1,6 @@
-package ru.mirea.kotovsv.toastapp;
+package ru.mirea.kotovsv.lesson3;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,16 +20,5 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
-
-
-    public void onClickCount(View view)
-    {
-        EditText text = (EditText) findViewById(R.id.editTextText);
-
-        Toast toast = Toast.makeText(getApplicationContext(),
-                "«СТУДЕНТ № 9 ГРУППА БСБО-07-22 Количество символов - "+ text.length()+"!",
-                Toast.LENGTH_SHORT);
-        toast.show();
     }
 }
