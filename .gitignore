@@ -3,7 +3,7 @@
 build/
 
 # Local configuration file (sdk path, etc)
-local.properties
+Lesson3/local.properties
 
 # Log/OS Files
 *.log
