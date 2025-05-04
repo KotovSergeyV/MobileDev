@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DataFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B6FFBA"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/moh_title"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="32dp"
+            android:text="МОХ"
+            android:textAlignment="center"
+            android:textColor="@color/purple_500"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="380dp"
+            android:layout_height="214dp"
+            android:layout_marginHorizontal="16.dp"
+            android:layout_marginVertical="8dp"
+            app:srcCompat="@drawable/moh"
+            tools:src="@drawable/moh" />
+
+        <TextView
+            android:id="@+id/moh_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24.dp"
+            android:paddingVertical="16dp"
+            android:text="Моховидные, или Мхи, или Настоящие мхи, или Бриофиты (лат. Bryophyta), — отдел высших растений, насчитывающий около 13 тысяч видов,  объединённых в более чем 900 родов и около 100 семейств(общее число всех мохообразных, включая Печёночные мхи и Антоцеротовые мхи, составляет около 20 000 видов). Как правило, это мелкие растения, длина которых лишь изредка превышает 50 мм; исключение составляют водные мхи, некоторые из которых имеют длину более полуметра, и эпифиты, которые могут быть ещё более длинными. Моховидные, как и другие Мохообразные, отличаются от других высших растений тем, что в их жизненном цикле гаплоидный гаметофит преобладает над диплоидным спорофитом."
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+</FrameLayout>
