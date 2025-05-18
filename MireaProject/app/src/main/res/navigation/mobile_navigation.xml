@@ -31,4 +31,9 @@
         android:id="@+id/menu_search"
         android:name="ru.mirea.kotovsv.mireaproject.WebViewFragment"
         android:label="WebViewFragment" />
+
+    <fragment
+        android:id="@+id/worker"
+        android:name="ru.mirea.kotovsv.mireaproject.WorkerFragment"
+        android:label="WorkerFragment" />
 </navigation>

@@ -24,5 +24,9 @@
             android:id="@+id/moh_data"
             android:icon="@drawable/moh_icon"
             android:title="@string/menu_moh" />
+        <item
+            android:id="@+id/worker"
+            android:icon="@drawable/loading_img"
+            android:title="@string/worker" />
     </group>
 </menu>
