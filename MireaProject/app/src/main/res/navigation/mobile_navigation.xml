@@ -36,4 +36,17 @@
         android:id="@+id/worker"
         android:name="ru.mirea.kotovsv.mireaproject.WorkerFragment"
         android:label="WorkerFragment" />
+
+    <fragment
+        android:id="@+id/camera"
+        android:name="ru.mirea.kotovsv.mireaproject.CameraFragment"
+        android:label="CameraFragment" />
+    <fragment
+        android:id="@+id/sensor"
+        android:name="ru.mirea.kotovsv.mireaproject.SensorFragment"
+        android:label="SensorFragment" />
+    <fragment
+        android:id="@+id/audio"
+        android:name="ru.mirea.kotovsv.mireaproject.AudioRecordFragment"
+        android:label="AudioRecordFragment" />
 </navigation>

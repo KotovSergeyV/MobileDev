@@ -22,6 +22,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -51,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.getRoot().setBackgroundColor(Color.argb(75, 50, 255, 170));
+        ConstraintLayout root = binding.getRoot();
+        root.setBackgroundColor(Color.argb(75, 50, 255, 170));
 
         //  Инициализация лаунчера разрешений
 //        Создает лаунчер для запроса нескольких разрешений одновременно

@@ -28,5 +28,17 @@
             android:id="@+id/worker"
             android:icon="@drawable/loading_img"
             android:title="@string/worker" />
+        <item
+            android:id="@+id/camera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/camera" />
+        <item
+            android:id="@+id/sensor"
+            android:icon="@drawable/temperature"
+            android:title="@string/boiling_temperature" />
+        <item
+            android:id="@+id/audio"
+            android:icon="@drawable/audio_rec"
+            android:title="@string/audio_record" />
     </group>
 </menu>
