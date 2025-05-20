@@ -6,27 +6,29 @@ import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import ru.mirea.kotovsv.mireaproject.databinding.FragmentAudioRecordBinding;
-import ru.mirea.kotovsv.mireaproject.databinding.FragmentCameraBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,15 +41,17 @@ public class AudioRecordFragment extends Fragment {
     private static final int REQUEST_CODE_PERMISSION = 200;
     private final String TAG = AudioRecordFragment.class.getSimpleName();
 
-    private boolean isWork;
     private String fileName = null;
     private Button recordButton = null;
-    private Button playButton = null;
     private MediaRecorder recorder = null;
     boolean isStartRecord = true;
-    boolean isStartPlay = false;
+    private final MutableLiveData<List<File>> recordings = new MutableLiveData<>(new ArrayList<>());
 
+    private AudioAdapter adapter;
 
+    MediaPlayer mediaPlayer ;
+    // You already know the path since you set it
+    String currentPath;
     
 
     // TODO: Rename parameter arguments, choose names that match
@@ -98,16 +102,19 @@ public class AudioRecordFragment extends Fragment {
 
         binding = FragmentAudioRecordBinding.inflate(getLayoutInflater());
 //        setContentView(binding.getRoot());
-        ConstraintLayout root = binding.getRoot();
+        LinearLayout root = binding.getRoot();
         root.setBackgroundColor(Color.argb(75, 50, 255, 170));
 
         recordButton = binding.recordButton;
 
 
+        adapter = new AudioAdapter(recordings.getValue(), this::playAudio, this::pauseAudio);
+        binding.audioList.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.audioList.setAdapter(adapter);
+
         int audioRecordPermissionStatus = ContextCompat.checkSelfPermission(root.getContext(), android.Manifest.permission.RECORD_AUDIO);
-        if(audioRecordPermissionStatus == PackageManager.PERMISSION_GRANTED){
-            isWork = true;
-        } else {
+        if(!(audioRecordPermissionStatus == PackageManager.PERMISSION_GRANTED)){
+
             ActivityCompat.requestPermissions(requireActivity(), new String[] {android.Manifest.permission.RECORD_AUDIO}, REQUEST_CODE_PERMISSION);
         }
 
@@ -128,6 +135,7 @@ public class AudioRecordFragment extends Fragment {
             }
         });
 
+        recordings.observe(getViewLifecycleOwner(), files -> adapter.notifyDataSetChanged());
 
         return root;
     }
@@ -156,7 +164,7 @@ public class AudioRecordFragment extends Fragment {
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH).format(new Date());
-        fileName =  requireContext().getExternalFilesDir(null).getAbsolutePath() + "/audiorecord_"+timeStamp+"_.3gp";
+        fileName = requireContext().getExternalFilesDir(null).getAbsolutePath() + "/audiorecord_"+timeStamp+"_.3gp";
 //        Log.d("FindFile", requireContext().getExternalFilesDir(null).getAbsolutePath() + "/audiorecord.3gp");
         recorder.setOutputFile(fileName);
 
@@ -188,6 +196,14 @@ public class AudioRecordFragment extends Fragment {
                 recorder.reset();  // Reset before release
                 recorder.release();
                 recorder = null;
+                isStartRecord = false;
+
+                adapter.SetCurrentName( fileName);
+                List<File> current = recordings.getValue();
+                if (current != null) {
+                    current.add(new File(fileName));
+                    recordings.setValue(current);
+                }
 
                 Log.d(TAG, "Recorder successfully stopped and released");
             } else {
@@ -199,6 +215,46 @@ public class AudioRecordFragment extends Fragment {
             recorder = null;
         }
     }
+
+
+    private void playAudio(File file) {
+
+
+        if (mediaPlayer != null)
+        {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        mediaPlayer =  new MediaPlayer();
+        try {
+            mediaPlayer.setDataSource(file.getAbsolutePath());
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+            currentPath = file.getAbsolutePath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void pauseAudio(File file) {
+        Log.d("audio", currentPath);
+        Log.d("audio", file.getAbsolutePath());
+        if (Objects.equals(currentPath, file.getAbsolutePath()) && mediaPlayer != null
+                && mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+
 
 
 }
