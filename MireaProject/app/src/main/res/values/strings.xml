@@ -21,4 +21,6 @@
     <string name="boiling_temperatue">boiling_temperatue</string>
     <string name="boiling_temperature">boiling_temperature</string>
     <string name="audio_record">audio_record</string>
+    <string name="profile">profile</string>
+    <string name="file_converter">file_converter</string>
 </resources>

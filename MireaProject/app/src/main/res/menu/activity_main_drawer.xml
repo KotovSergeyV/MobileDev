@@ -40,5 +40,14 @@
             android:id="@+id/audio"
             android:icon="@drawable/audio_rec"
             android:title="@string/audio_record" />
+
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/user_access"
+            android:title="@string/profile" />
+        <item
+            android:id="@+id/file_handle"
+            android:icon="@drawable/folder"
+            android:title="@string/file_converter" />
     </group>
 </menu>

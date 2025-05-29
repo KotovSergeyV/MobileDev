@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/inputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите текст"
+        android:inputType="textMultiLine"
+        android:minHeight="100dp"/>
+
+    <Button
+        android:id="@+id/btnToUpper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="В ВЕРХНИЙ РЕГИСТР"/>
+
+    <Button
+        android:id="@+id/btnToLower"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="в нижний регистр"/>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сохранить в файл"/>
+
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Результат:"/>
+</LinearLayout>

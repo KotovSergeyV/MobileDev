@@ -49,4 +49,12 @@
         android:id="@+id/audio"
         android:name="ru.mirea.kotovsv.mireaproject.AudioRecordFragment"
         android:label="AudioRecordFragment" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="ru.mirea.kotovsv.mireaproject.Profile"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/file_handle"
+        android:name="ru.mirea.kotovsv.mireaproject.FileConverterFragment"
+        android:label="FileConverterFragment" />
 </navigation>
