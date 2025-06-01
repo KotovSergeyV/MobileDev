@@ -57,4 +57,8 @@
         android:id="@+id/file_handle"
         android:name="ru.mirea.kotovsv.mireaproject.FileConverterFragment"
         android:label="FileConverterFragment" />
+    <fragment
+        android:id="@+id/weather"
+        android:name="ru.mirea.kotovsv.mireaproject.WeatherFragment"
+        android:label="WeatherFragment" />
 </navigation>

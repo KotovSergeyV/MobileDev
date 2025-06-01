@@ -49,5 +49,9 @@
             android:id="@+id/file_handle"
             android:icon="@drawable/folder"
             android:title="@string/file_converter" />
+        <item
+            android:id="@+id/weather"
+            android:icon="@drawable/temperature"
+            android:title="@string/weather" />
     </group>
 </menu>
